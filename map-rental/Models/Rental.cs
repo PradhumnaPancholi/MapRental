@@ -35,9 +35,8 @@ namespace map_rental.Models
         public string Contact { get; set; }
 
         public int UserId { get; set; }
-        //added//
-        //public string DisplayName { get; set; }
-        //================================//
+        
+     
         public virtual User User { get; set; }
     }
 }
