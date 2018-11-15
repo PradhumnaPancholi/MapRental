@@ -58,11 +58,12 @@ namespace map_rental
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            //google authentication//
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "989291589758-oh6lv19lb8de6co2s35cn7v5kuobemoa.apps.googleusercontent.com",
+                ClientSecret = "k02mL9lgoMDfOVdQ1oJ_FW4F"
+            });
         }
     }
 }
