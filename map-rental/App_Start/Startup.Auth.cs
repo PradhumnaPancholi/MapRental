@@ -46,10 +46,10 @@ namespace map_rental
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             //Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: ""
-            //    );
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "bf87512c-10ee-4a92-adde-b21eaa661573",
+                clientSecret: "ibntmTPPKSP983#lwA09}[-"
+                );
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -57,10 +57,10 @@ namespace map_rental
 
 
             //for facebook oauth// 
-            app.UseFacebookAuthentication(
-               appId: "280457412811651",
-               appSecret: "92f309a359675da1ef9743b3bee7db6e"
-               );
+            //app.UseFacebookAuthentication(
+            //   appId: "280457412811651",
+            //   appSecret: "92f309a359675da1ef9743b3bee7db6e"
+            //   );
 
             //google authentication//
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
