@@ -10,11 +10,13 @@ using map_rental.Models;
 
 namespace map_rental.Controllers
 {
+    [Authorize]
     public class RentalsController : Controller
     {
         private MapRentalModel db = new MapRentalModel();
 
         // GET: Rentals
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var rentals = db.Rentals.Include(r => r.User);
@@ -22,6 +24,7 @@ namespace map_rental.Controllers
         }
 
         // GET: Rentals/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace map_rental.Controllers
         }
 
         // GET: Rentals/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "UserId", "Username");
