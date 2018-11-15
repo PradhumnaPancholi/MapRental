@@ -54,9 +54,12 @@ namespace map_rental
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+
+            //for facebook oauth// 
+            app.UseFacebookAuthentication(
+               appId: "280457412811651",
+               appSecret: "92f309a359675da1ef9743b3bee7db6e"
+               );
 
             //google authentication//
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
