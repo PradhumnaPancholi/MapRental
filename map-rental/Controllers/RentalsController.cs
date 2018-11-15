@@ -56,6 +56,10 @@ namespace map_rental.Controllers
         {
             if (ModelState.IsValid)
             {
+                //if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                //{
+                    String UserId = System.Web.HttpContext.Current.User.Identity.Name;
+                //}
                 db.Rentals.Add(rental);
                 db.SaveChanges();
                 return RedirectToAction("Index");
