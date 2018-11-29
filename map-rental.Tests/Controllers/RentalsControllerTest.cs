@@ -15,6 +15,7 @@ namespace map_rental.Tests.Controllers
         RentalsController controller;
         Mock<IRentalsMock> mock;
         List<Rental> rentals;
+        private Rental rental;
 
         [TestInitialize]
         public void TestInitialize()
@@ -207,8 +208,40 @@ namespace map_rental.Tests.Controllers
         public void ModelSavesNewRecord()
         {
             //act
-            Rental copiedAlbumFromGlobal = rental;
+            Rental copiedRentalFromGlobal = rental;
             RedirectToRouteResult result = (RedirectToRouteResult)controller.Create(copiedRentalFromGlobal);
+            //assert
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
+
+        // GET: Rentals/Delete
+        #region
+
+        [TestMethod]
+        public void DeleteNoIdLoadsError()
+        {
+            //act
+            ViewResult result = (ViewResult)controller.Delete(null);
+
+            //assert
+            Assert.AreEqual("Error", result.ViewName);
+        }
+
+        [TestMethod]
+        public void DeleteInvalidIdLoadsError()
+        {
+            //act
+            ViewResult result = (ViewResult)controller.Delete(555);
+
+            //assert
+            Assert.AreEqual("Error", result.ViewName);
+        }
+        #endregion
+        [TestMethod]
+        public void DeleteConfirmedDataSuccessful()
+        {
+            //act
+            RedirectToRouteResult result = (RedirectToRouteResult)controller.DeleteConfirmed(100);
 
             //assert
             Assert.AreEqual("Index", result.RouteValues["action"]);
@@ -216,3 +249,4 @@ namespace map_rental.Tests.Controllers
 
     }
 }
+

@@ -86,7 +86,7 @@ namespace map_rental.Controllers
             }
 
             ViewBag.UserId = new SelectList(db.Users, "UserId", "Username", rental.UserId);
-            return View(rental);
+            return View("Create", rental);
         }
 
         // GET: Rentals/Edit/5
@@ -125,20 +125,23 @@ namespace map_rental.Controllers
             return View("Edit", rental);
         }
 
-        //// GET: Rentals/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Rental rental = db.Rentals.Find(id);
-        //    if (rental == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(rental);
-        //}
+        // GET: Rentals/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
+            }
+            Rental rental = db.Rentals.SingleOrDefault(r => r.RentalId == id);
+            if (rental == null)
+            {
+                //return HttpNotFound();
+                return View("Error");
+            }
+            return View("Delete",rental);
+        }
+
 
         //// POST: Rentals/Delete/5
         //[HttpPost, ActionName("Delete")]
