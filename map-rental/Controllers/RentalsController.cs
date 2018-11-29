@@ -143,24 +143,34 @@ namespace map_rental.Controllers
         }
 
 
-        //// POST: Rentals/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Rental rental = db.Rentals.Find(id);
-        //    db.Rentals.Remove(rental);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // POST: Rentals/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            //    Rental rental = db.Rentals.Find(id);
+            //    db.Rentals.Remove(rental);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            Rental rental = db.Rentals.SingleOrDefault(r => r.RentalId == id);
+            if (rental == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                db.Delete(rental);
+                return RedirectToAction("Index");
+            }
+            //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+            //protected override void Dispose(bool disposing)
+            //{
+            //    if (disposing)
+            //    {
+            //        db.Dispose();
+            //    }
+            //    base.Dispose(disposing);
+        }
     }
 }
