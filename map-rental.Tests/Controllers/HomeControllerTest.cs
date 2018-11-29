@@ -39,6 +39,19 @@ namespace map_rental.Tests.Controllers
         }
 
         [TestMethod]
+        public void AboutLoadsView()
+        {
+            //Arrange//
+            HomeController controller = new HomeController();
+
+            //Act//
+            ViewResult result = controller.About() as ViewResult;
+
+            //Assert//
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
         public void Contact()
         {
             // Arrange
